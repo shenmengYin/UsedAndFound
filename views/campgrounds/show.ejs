@@ -26,7 +26,8 @@
                     <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a>
                 </div>
                 <hr>
-                <% campground.comments.forEach(function(comment){ %>
+                <% campground.comments.forEach(function(comment){ console.log("Found Comment"); %>
+               
                     <div class="row">
                         <div class="col-md-12">
                             <strong><%= comment.author.username %></strong>
