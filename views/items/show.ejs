@@ -8,25 +8,25 @@
         </div>
         <div class="col-md-9">
             <div class="thumbnail">
-                <img class="img-responsive" src="<%= campground.image %>">
+                <img class="img-responsive" src="<%= item.image %>">
                 <div class="caption-full">
                     <h4 class="pull-right">$9.00</h4>
-                    <h4><a><%=campground.name%></a></h4>
-                    <p><%= campground.description %></p>
+                    <h4><a><%=item.name%></a></h4>
+                    <p><%= item.description %></p>
                     <p>
-                        <em>Submitted By <%= campground.author.username %></em>
+                        <em>Submitted By <%= item.author.username %></em>
                     </p>
-                    <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
-                        <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit Item</a>
+                    <% if(currentUser && item.author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-warning" href="/items/<%= item._id %>/edit">Edit Item</a>
                     <% } %>
                 </div>
             </div>
             <div class="well">
                 <div class="text-right">
-                    <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a>
+                    <a class="btn btn-success" href="/items/<%= item._id %>/comments/new">Add New Comment</a>
                 </div>
                 <hr>
-                <% campground.comments.forEach(function(comment){ console.log("Found Comment"); %>
+                <% item.comments.forEach(function(comment){ console.log("Found Comment"); %>
                
                     <div class="row">
                         <div class="col-md-12">
@@ -36,9 +36,9 @@
                            <%= comment.text %> 
 
                             <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
-                                <form style="display: inline" class="pull-right" action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                <form style="display: inline" class="pull-right" action="/items/<%=item._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
                                     <button class="btn btn-xs btn-danger">DELETE</button>
-                                    <a href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit" class="btn btn-xs btn-info">EDIT</a>
+                                    <a href="/items/<%=item._id%>/comments/<%=comment._id%>/edit" class="btn btn-xs btn-info">EDIT</a>
                                 </form>
                             <% } %> 
                        </div>

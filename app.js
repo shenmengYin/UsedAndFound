@@ -6,7 +6,7 @@ var express     = require("express"),
     cookieParser = require("cookie-parser"),
     LocalStrategy = require("passport-local"),
     flash        = require("connect-flash"),
-    Campground  = require("./models/campground"),
+    item  = require("./models/item"),
     Comment     = require("./models/comment"),
     User        = require("./models/user"),
     session = require("express-session"),
@@ -15,7 +15,7 @@ var express     = require("express"),
     
 //requiring routes
 var commentRoutes    = require("./routes/comments"),
-    itemRoutes = require("./routes/campgrounds"),
+    itemRoutes = require("./routes/items"),
     indexRoutes      = require("./routes/index")
     
 // mongoose.connect("mongodb://localhost/yelp_camp_v9", { useUnifiedTopology: true, useNewUrlParser: true });
@@ -51,8 +51,8 @@ app.use(function(req, res, next){
 
 
 app.use("/", indexRoutes);
-app.use("/campgrounds", itemRoutes);
-app.use("/campgrounds/:id/comments", commentRoutes);
+app.use("/items", itemRoutes);
+app.use("/items/:id/comments", commentRoutes);
 var port = process.env.PORT || 3000;
 app.listen(port, function(){
    console.log("The YelpCamp Server Has Started!");
