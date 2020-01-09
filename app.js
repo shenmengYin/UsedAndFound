@@ -15,7 +15,7 @@ var express     = require("express"),
     
 //requiring routes
 var commentRoutes    = require("./routes/comments"),
-    campgroundRoutes = require("./routes/campgrounds"),
+    itemRoutes = require("./routes/campgrounds"),
     indexRoutes      = require("./routes/index")
     
 // mongoose.connect("mongodb://localhost/yelp_camp_v9", { useUnifiedTopology: true, useNewUrlParser: true });
@@ -51,7 +51,7 @@ app.use(function(req, res, next){
 
 
 app.use("/", indexRoutes);
-app.use("/campgrounds", campgroundRoutes);
+app.use("/campgrounds", itemRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 var port = process.env.PORT || 3000;
 app.listen(port, function(){
